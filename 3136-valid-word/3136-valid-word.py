@@ -1,19 +1,11 @@
 class Solution:
-    def isValid(self, s: str) -> bool:
-        if len(s) < 3:
-            return False
+    def isValid(self, word: str) -> bool:
+        if len(word) < 3: return False
+        v, c = False, False
 
-        vowels = 0
-        consonants = 0
-        vowel_set = "aeiouAEIOU"
+        for x in word:
+            if not x.isdigit() and not x.isalpha(): return False
+            if x.lower() in 'aeiou': v = True
+            elif not x.isdigit(): c = True
 
-        for c in s:
-            if c.isalpha():
-                if c in vowel_set:
-                    vowels += 1
-                else:
-                    consonants += 1
-            elif not c.isdigit():
-                return False  
-
-        return vowels >= 1 and consonants >= 1
+        return v and c
